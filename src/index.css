@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-neon-blue: #00f2ff;
+  --color-neon-purple: #bc13fe;
+  --color-deep-space: #020617;
+}
+
+@layer base {
+  body {
+    @apply bg-deep-space text-slate-100 font-sans antialiased overflow-x-hidden;
+    background: linear-gradient(to bottom, #020617, #0f172a);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+.glass-morphism {
+  @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl;
+}
+
+.glass-morphism-dark {
+  @apply backdrop-blur-2xl bg-black/40 border border-white/5 shadow-2xl;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-blue to-neon-purple;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+}
+
+/* Atmospheric effects */
+.weather-particle {
+  position: absolute;
+  pointer-events: none;
+  background: white;
+  border-radius: 50%;
+}
+
+@keyframes rain {
+  0% { transform: translateY(-100vh) translateX(0); }
+  100% { transform: translateY(100vh) translateX(20px); }
+}
+
+@keyframes snow {
+  0% { transform: translateY(-100vh) translateX(0) rotate(0deg); }
+  100% { transform: translateY(100vh) translateX(50px) rotate(360deg); }
+}
+
+@keyframes flash {
+  0%, 90%, 100% { opacity: 0; }
+  92% { opacity: 0.3; }
+  94% { opacity: 0.1; }
+  96% { opacity: 0.8; }
+}
+
+.thunder-overlay {
+  position: fixed;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 50;
+  animation: flash 10s infinite;
+}

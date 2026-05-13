@@ -1,0 +1,6 @@
+{
+  "name": "WeatherX",
+  "description": "A cinematic, futuristic weather platform with immersive animations, real-time effects, and AI-powered recommendations.",
+  "requestFramePermissions": ["geolocation", "microphone"],
+  "majorCapabilities": ["AI Predictions", "Real-time Weather", "Interactive Radar", "Voice Assistant"]
+}
